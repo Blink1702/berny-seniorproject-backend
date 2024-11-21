@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Stock {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID stockid;

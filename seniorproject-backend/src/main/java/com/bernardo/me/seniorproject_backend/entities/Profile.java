@@ -10,7 +10,6 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Profile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int profileid;

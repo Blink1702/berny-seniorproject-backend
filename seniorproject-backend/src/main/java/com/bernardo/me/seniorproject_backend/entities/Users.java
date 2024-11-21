@@ -12,7 +12,6 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Users {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID userid;
