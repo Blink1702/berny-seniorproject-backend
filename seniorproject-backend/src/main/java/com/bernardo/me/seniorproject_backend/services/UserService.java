@@ -87,7 +87,7 @@ public class UserService {
         return maybeUser.get().getProfile();
     }
 
-    public void saveOrder(UUID userid, OrdersDTO order) throws WrongUserException {
+    public String saveOrder(UUID userid, OrdersDTO order) throws WrongUserException {
         Optional<Users> maybeUser = usersRepository.findById(userid);
         if (!maybeUser.isPresent())
             throw new WrongUserException();
@@ -96,6 +96,8 @@ public class UserService {
         Orders newOrders = new Orders(order);
         newOrders.setUser(user);
         ordersRepository.save(newOrders);
+
+        return newOrders.getOrderid().toString();
     }
 
     public List<Orders> findOrders(UUID userid) {
@@ -103,6 +105,13 @@ public class UserService {
         if (!maybeUser.isPresent())
             return new ArrayList<Orders>();
         return maybeUser.get().getOrders();
+    }
+
+    public Orders findOrderById(UUID orderid) {
+        Optional<Orders> maybeOrder = ordersRepository.findById(orderid);
+        if (!maybeOrder.isPresent())
+            return null;
+        return maybeOrder.get();
     }
 
     public List<Orders> findFulfilledOrders(UUID userid) {
