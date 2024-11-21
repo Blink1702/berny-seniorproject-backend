@@ -28,13 +28,13 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<UsersDTO> checkLogin(@RequestBody UsersDTO user) {
-       Users result = us.findByNameAndPassword(user.getUsername(), user.getPassword());
-       if(result==null){
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(user);
-       }
-       String token = jwt.makeJwt(result.getUserid().toString());
-       user.setToken(token);
-       return ResponseEntity.ok().body(user)
+        Users result = us.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+        if (result == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(user);
+        }
+        String token = jwt.makeJwt(result.getUserid().toString());
+        user.setToken(token);
+        return ResponseEntity.ok().body(user);
     }
 
 }

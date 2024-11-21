@@ -46,7 +46,7 @@ public class UserService {
         return newUser.getUserid().toString();
     }
 
-    public Users findbyUsernameAndPassword(String username, String password) {
+    public Users findByUsernameAndPassword(String username, String password) {
         List<Users> existing = usersRepository.findByUsername(username);
         if (existing.size() != 1) {
             return null;
