@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,11 +26,9 @@ import com.bernardo.me.seniorproject_backend.services.UserService;
 @CrossOrigin(origins = "*")
 public class OrderController {
     private UserService us;
-    private JwtService jwt;
 
     public OrderController(UserService us, JwtService jwt) {
         this.us = us;
-        this.jwt = jwt;
     }
 
     @PostMapping

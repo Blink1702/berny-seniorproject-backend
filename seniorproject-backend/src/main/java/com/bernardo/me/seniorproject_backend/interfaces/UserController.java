@@ -1,10 +1,8 @@
 package com.bernardo.me.seniorproject_backend.interfaces;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,10 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bernardo.me.seniorproject_backend.entities.Orders;
 import com.bernardo.me.seniorproject_backend.entities.Profile;
 import com.bernardo.me.seniorproject_backend.entities.Users;
-import com.bernardo.me.seniorproject_backend.interfaces.dtos.OrdersDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.ProfileDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.UsersDTO;
 import com.bernardo.me.seniorproject_backend.security.JwtService;
@@ -25,7 +21,6 @@ import com.bernardo.me.seniorproject_backend.services.DuplicateException;
 import com.bernardo.me.seniorproject_backend.services.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/users")
