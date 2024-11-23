@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.bernardo.me.seniorproject_backend.entities.Orders;
 
 public interface OrdersRepository extends JpaRepository<Orders, UUID> {
-    @Query("select o from Orders o where o.status=1 and o.user.userid=:user")
+    @Query("select o from Orders o where o.fulfilled=true and o.user.userid=:user")
     List<Orders> findFulfilled(UUID user);
 
 }
