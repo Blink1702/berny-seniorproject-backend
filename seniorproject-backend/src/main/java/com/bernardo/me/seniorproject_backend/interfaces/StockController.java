@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,15 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bernardo.me.seniorproject_backend.entities.Stock;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.StockDTO;
-import com.bernardo.me.seniorproject_backend.security.PantryUserDetails;
-import com.bernardo.me.seniorproject_backend.security.WrongUserException;
 import com.bernardo.me.seniorproject_backend.services.StockService;
 import com.bernardo.me.seniorproject_backend.services.WrongStockException;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/stock")
