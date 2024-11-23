@@ -5,12 +5,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bernardo.me.seniorproject_backend.entities.Stock;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.StockDTO;
 import com.bernardo.me.seniorproject_backend.repositories.StockRepository;
 import com.bernardo.me.seniorproject_backend.repositories.UsersRepository;
 
+@Service
 public class StockService {
     @Autowired
     UsersRepository usersRepository;
