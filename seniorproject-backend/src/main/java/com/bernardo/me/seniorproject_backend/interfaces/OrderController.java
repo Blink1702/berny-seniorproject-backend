@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bernardo.me.seniorproject_backend.entities.Orders;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.OrdersDTO;
-import com.bernardo.me.seniorproject_backend.security.JwtService;
 import com.bernardo.me.seniorproject_backend.security.PantryUserDetails;
 import com.bernardo.me.seniorproject_backend.security.WrongUserException;
 import com.bernardo.me.seniorproject_backend.services.UserService;
@@ -27,13 +26,14 @@ import com.bernardo.me.seniorproject_backend.services.UserService;
 public class OrderController {
     private UserService us;
 
-    public OrderController(UserService us, JwtService jwt) {
+    public OrderController(UserService us) {
         this.us = us;
     }
 
     @PostMapping
     public ResponseEntity<OrdersDTO> save(Authentication authentication, @RequestBody OrdersDTO order) {
         PantryUserDetails details = (PantryUserDetails) authentication.getPrincipal();
+
         order.setUser(details.getUsername());
         String key;
         try {
