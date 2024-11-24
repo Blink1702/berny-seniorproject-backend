@@ -17,7 +17,7 @@ public class ProfileDTO {
         user = core.getUser().toString();
         luId = core.getLuid();
         email = core.getEmail();
-        orders = new OrdersDTO(core.getOrders());
+        // orders = new OrdersDTO(core.getOrders());
     }
 
     public int getProfileid() {
@@ -59,4 +59,5 @@ public class ProfileDTO {
     public void setOrders(OrdersDTO orders) {
         this.orders = orders;
     }
+
 }
