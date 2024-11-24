@@ -47,11 +47,23 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Orders>> getOrders(Authentication authentication) {
+    public ResponseEntity<List<Orders>> getAllOrders() {
+        List<Orders> results = us.findOrders();
+        return ResponseEntity.ok().body(results);
+    }
+
+    @GetMapping("/userOrder")
+    public ResponseEntity<List<Orders>> getOrdersByUser(Authentication authentication) {
         PantryUserDetails details = (PantryUserDetails) authentication.getPrincipal();
         UUID id = UUID.fromString(details.getUsername());
-        List<Orders> results = us.findOrders(id);
+        List<Orders> results = us.findOrderByUser(id);
         return ResponseEntity.ok().body(results);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Orders> getOrderById(@PathVariable UUID id) {
+        Orders result = us.findOrderById(id);
+        return ResponseEntity.ok().body(result);
     }
 
     @PostMapping("/{id}/fulfill")

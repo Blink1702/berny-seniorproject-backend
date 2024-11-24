@@ -101,7 +101,11 @@ public class UserService {
         return newOrders.getOrderid().toString();
     }
 
-    public List<Orders> findOrders(UUID userid) {
+    public List<Orders> findOrders() {
+        return ordersRepository.findAll();
+    }
+
+    public List<Orders> findOrderByUser(UUID userid) {
         Optional<Users> maybeUser = usersRepository.findById(userid);
         if (!maybeUser.isPresent())
             return new ArrayList<Orders>();
