@@ -1,6 +1,7 @@
 package com.bernardo.me.seniorproject_backend.services;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -98,7 +99,6 @@ public class UserService {
         Orders newOrders = new Orders(order);
         newOrders.setUser(user);
         newOrders.setFulfilled(false);
-        newOrders.setDate(LocalDate.now());
         ordersRepository.save(newOrders);
 
         return newOrders.getOrderid().toString();

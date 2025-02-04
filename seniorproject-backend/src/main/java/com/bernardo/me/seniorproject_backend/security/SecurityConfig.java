@@ -25,15 +25,11 @@ public class SecurityConfig {
                                 .csrf(csrf -> csrf.disable())
                                 .sessionManagement(management -> management
                                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                                .authorizeHttpRequests(
-                                                authorize -> authorize
-                                                                .requestMatchers(HttpMethod.POST, "/users",
-                                                                                "/users/login", "/orders")
-                                                                .permitAll()
-                                                                .requestMatchers(HttpMethod.GET, "/orders",
-                                                                                "/{id}/orders")
-                                                                .permitAll()
-                                                                .anyRequest().authenticated())
+                                .authorizeHttpRequests(authorize -> authorize
+                                                .requestMatchers(HttpMethod.POST, "/users", "/users/login", "/orders")
+                                                .permitAll()
+                                                .requestMatchers(HttpMethod.GET, "/orders", "/{id}/orders").permitAll()
+                                                .anyRequest().authenticated())
                                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
                 return http.build();
         }

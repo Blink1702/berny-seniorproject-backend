@@ -1,10 +1,15 @@
 package com.bernardo.me.seniorproject_backend.entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.OrdersDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,12 +20,14 @@ import jakarta.persistence.ManyToOne;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "VARCHAR(45)")
+    @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID orderid;
     @ManyToOne
     private Users user;
     private String item;
     private boolean fulfilled;
-    private LocalDate date;
+    private LocalDateTime date;
 
     public Orders() {
     }
@@ -28,7 +35,7 @@ public class Orders {
     public Orders(OrdersDTO core) {
         item = core.getItem();
         fulfilled = core.getFulfilled();
-        date = LocalDate.parse(core.getDate());
+        date = LocalDateTime.now();
     }
 
     public UUID getOrderid() {
@@ -63,11 +70,11 @@ public class Orders {
         this.fulfilled = fulfilled;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

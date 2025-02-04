@@ -3,6 +3,10 @@ package com.bernardo.me.seniorproject_backend.entities;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +18,8 @@ import jakarta.persistence.OneToOne;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "VARCHAR(45)")
+    @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID userid;
     private String username;
     private String password;

@@ -4,8 +4,12 @@ package com.bernardo.me.seniorproject_backend.entities;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.StockDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +19,8 @@ import jakarta.persistence.Id;
 public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "VARCHAR(45)")
+    @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID stockid;
     private Integer amount;
     private String type;
