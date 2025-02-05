@@ -1,7 +1,5 @@
 package com.bernardo.me.seniorproject_backend.services;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -64,7 +62,7 @@ public class UserService {
 
     public void saveProfile(UUID userid, ProfileDTO profile) throws WrongUserException, DuplicateException {
         Optional<Users> maybeUser = usersRepository.findById(userid);
-        if (!maybeUser.isPresent())
+        if (maybeUser.isEmpty())
             throw new WrongUserException();
 
         Users user = maybeUser.get();
@@ -84,7 +82,7 @@ public class UserService {
 
     public Profile findProfile(UUID userid) {
         Optional<Users> maybeUser = usersRepository.findById(userid);
-        if (!maybeUser.isPresent())
+        if (maybeUser.isEmpty())
             return null;
 
         return maybeUser.get().getProfile();
@@ -92,7 +90,7 @@ public class UserService {
 
     public String saveOrder(UUID userid, OrdersDTO order) throws WrongUserException {
         Optional<Users> maybeUser = usersRepository.findById(userid);
-        if (!maybeUser.isPresent())
+        if (maybeUser.isEmpty())
             throw new WrongUserException();
 
         Users user = maybeUser.get();
@@ -110,14 +108,14 @@ public class UserService {
 
     public List<Orders> findOrderByUser(UUID userid) {
         Optional<Users> maybeUser = usersRepository.findById(userid);
-        if (!maybeUser.isPresent())
+        if (maybeUser.isEmpty())
             return new ArrayList<Orders>();
         return maybeUser.get().getOrders();
     }
 
     public Orders findOrderById(UUID orderid) {
         Optional<Orders> maybeOrder = ordersRepository.findById(orderid);
-        if (!maybeOrder.isPresent())
+        if (maybeOrder.isEmpty())
             return null;
         return maybeOrder.get();
     }

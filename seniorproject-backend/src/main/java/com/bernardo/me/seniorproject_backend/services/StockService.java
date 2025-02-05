@@ -22,7 +22,7 @@ public class StockService {
 
     public String save(StockDTO stock) throws WrongStockException {
         Optional<Stock> maybeS = stockRepository.findById(UUID.fromString(stock.getStockid()));
-        if (!maybeS.isPresent())
+        if (maybeS.isEmpty())
             throw new WrongStockException();
 
         Stock newStock = new Stock(stock);

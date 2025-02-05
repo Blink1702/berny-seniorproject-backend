@@ -1,5 +1,6 @@
 package com.bernardo.me.seniorproject_backend.security;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class PantryUserDetails implements UserDetails {
+    @Serial
     private static final long serialVersionUID = 1L;
     private String userid;
     private List<GrantedAuthority> authorities;
