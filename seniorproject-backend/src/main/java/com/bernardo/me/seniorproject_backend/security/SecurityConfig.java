@@ -26,9 +26,9 @@ public class SecurityConfig {
                                 .sessionManagement(management -> management
                                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                                 .authorizeHttpRequests(authorize -> authorize
-                                                .requestMatchers(HttpMethod.POST, "/users", "/users/login", "/orders")
+                                                .requestMatchers(HttpMethod.POST, "/users", "/users/login")
                                                 .permitAll()
-                                                .requestMatchers(HttpMethod.GET, "/orders", "/{id}/orders").permitAll()
+                                                .requestMatchers(HttpMethod.GET).permitAll()
                                                 .anyRequest().authenticated())
                                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
                 return http.build();

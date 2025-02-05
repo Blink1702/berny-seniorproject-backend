@@ -4,7 +4,7 @@ import com.bernardo.me.seniorproject_backend.entities.Orders;
 
 public class OrdersDTO {
     private String orderid;
-    private String user;
+    private String student;
     private String item;
     private boolean fulfilled;
     private String date;
@@ -15,7 +15,7 @@ public class OrdersDTO {
 
     public OrdersDTO(Orders core) {
         orderid = core.getOrderid().toString();
-        user = core.getUser().toString();
+        student = core.getUser().toString();
         item = core.getItem().toString();
         fulfilled = core.getFulfilled();
         date = core.getDate().toString();
@@ -30,11 +30,11 @@ public class OrdersDTO {
     }
 
     public String getUser() {
-        return user;
+        return student;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String student) {
+        this.student = student;
     }
 
     public String getItem() {

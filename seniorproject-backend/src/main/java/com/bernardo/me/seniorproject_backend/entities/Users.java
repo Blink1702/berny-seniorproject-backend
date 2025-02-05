@@ -25,7 +25,7 @@ public class Users {
     private String password;
     @OneToOne(mappedBy = "user")
     private Profile profile;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "student")
     List<Orders> orders;
 
     public Users() {

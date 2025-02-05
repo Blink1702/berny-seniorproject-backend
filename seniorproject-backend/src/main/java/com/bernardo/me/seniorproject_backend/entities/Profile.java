@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -14,10 +15,12 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int profileid;
     @OneToOne
+    @JoinColumn(name = "user")
     private Users user;
     private String luId;
     private String email;
     @OneToOne
+    @JoinColumn(name = "orders")
     private Orders orders;
 
     public Profile() {

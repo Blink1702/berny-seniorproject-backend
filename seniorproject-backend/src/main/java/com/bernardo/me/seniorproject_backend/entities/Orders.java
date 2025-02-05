@@ -14,6 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -24,7 +25,8 @@ public class Orders {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID orderid;
     @ManyToOne
-    private Users user;
+    @JoinColumn(name = "student")
+    private Users student;
     private String item;
     private boolean fulfilled;
     private LocalDateTime date;
@@ -47,11 +49,11 @@ public class Orders {
     }
 
     public Users getUser() {
-        return user;
+        return student;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setUser(Users student) {
+        this.student = student;
     }
 
     public String getItem() {
