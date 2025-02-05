@@ -28,7 +28,8 @@ public class SecurityConfig {
                                 .authorizeHttpRequests(authorize -> authorize
                                                 .requestMatchers(HttpMethod.POST, "/users", "/users/login")
                                                 .permitAll()
-                                                .requestMatchers(HttpMethod.GET).permitAll()
+                                                .requestMatchers(HttpMethod.GET, "/orders")
+                                                .permitAll()
                                                 .anyRequest().authenticated())
                                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
                 return http.build();

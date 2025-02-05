@@ -126,4 +126,12 @@ public class UserService {
         return orders;
     }
 
+    public Orders fulfillOrders(UUID orderid) {
+        Orders order = findOrderById(orderid);
+        order.setFulfilled(true);
+        ordersRepository.save(order);
+
+        return order;
+    }
+
 }

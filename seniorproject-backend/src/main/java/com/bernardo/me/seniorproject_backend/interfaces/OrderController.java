@@ -79,7 +79,7 @@ public class OrderController {
 
     @PostMapping("/{id}/fulfill")
     public ResponseEntity<OrdersDTO> fulfillOrder(@PathVariable UUID id) {
-        Orders order = us.findOrderById(id);
+        Orders order = us.fulfillOrders(id);
         OrdersDTO result = new OrdersDTO(order);
         return ResponseEntity.ok().body(result);
     }
