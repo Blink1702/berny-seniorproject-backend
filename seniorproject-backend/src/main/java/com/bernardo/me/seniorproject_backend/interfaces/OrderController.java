@@ -2,6 +2,7 @@ package com.bernardo.me.seniorproject_backend.interfaces;
 
 import java.nio.file.attribute.UserPrincipal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,22 +51,31 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Orders>> getAllOrders() {
-        List<Orders> results = us.findOrders();
+    public ResponseEntity<List<OrdersDTO>> getAllOrders() {
+        List<Orders> orders = us.findOrders();
+        List<OrdersDTO> results = new ArrayList<OrdersDTO>();
+        for (Orders o : orders) {
+            results.add(new OrdersDTO(o));
+        }
         return ResponseEntity.ok().body(results);
     }
 
     @GetMapping("/userOrder")
-    public ResponseEntity<List<Orders>> getOrdersByUser(Authentication authentication) {
+    public ResponseEntity<List<OrdersDTO>> getOrdersByUser(Authentication authentication) {
         PantryUserDetails details = (PantryUserDetails) authentication.getPrincipal();
         UUID id = UUID.fromString(details.getUsername());
-        List<Orders> results = us.findOrderByUser(id);
+        List<Orders> orders = us.findOrderByUser(id);
+        List<OrdersDTO> results = new ArrayList<OrdersDTO>();
+        for (Orders o : orders) {
+            results.add(new OrdersDTO(o));
+        }
         return ResponseEntity.ok().body(results);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Orders> getOrderById(@PathVariable UUID id) {
-        Orders result = us.findOrderById(id);
+    public ResponseEntity<OrdersDTO> getOrderById(@PathVariable UUID id) {
+        Orders order = us.findOrderById(id);
+        OrdersDTO result = new OrdersDTO(order);
         return ResponseEntity.ok().body(result);
     }
 

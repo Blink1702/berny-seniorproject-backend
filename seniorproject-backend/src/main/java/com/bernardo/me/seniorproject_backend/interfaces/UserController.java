@@ -86,30 +86,5 @@ public class UserController {
         ProfileDTO response = new ProfileDTO(result);
         return ResponseEntity.ok().body(response);
     }
-    /*
-     * @GetMapping("/orders")
-     * public ResponseEntity<List<Orders>> getOrders(Authentication authentication)
-     * {
-     * PantryUserDetails details = (PantryUserDetails)
-     * authentication.getPrincipal();
-     * UUID id = UUID.fromString(details.getUsername());
-     * List<Orders> results = us.findOrders(id);
-     * return ResponseEntity.ok().body(results);
-     * }
-     * 
-     * @PostMapping("/orders")
-     * public ResponseEntity<OrdersDTO> postOrder(Authentication
-     * authentication, @RequestBody OrdersDTO order) {
-     * PantryUserDetails details = (PantryUserDetails)
-     * authentication.getPrincipal();
-     * UUID id = UUID.fromString(details.getUsername());
-     * try {
-     * us.saveOrder(id, order);
-     * } catch (WrongUserException ex) {
-     * return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(order);
-     * }
-     * return ResponseEntity.status(HttpStatus.CREATED).body(order);
-     * }
-     */
 
 }
