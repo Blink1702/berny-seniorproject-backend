@@ -1,5 +1,7 @@
 package com.bernardo.me.seniorproject_backend.interfaces.dtos;
 
+import java.time.format.DateTimeFormatter;
+
 import com.bernardo.me.seniorproject_backend.entities.Orders;
 
 public class OrdersDTO {
@@ -15,10 +17,10 @@ public class OrdersDTO {
 
     public OrdersDTO(Orders core) {
         orderid = core.getOrderid().toString();
-        student = core.getUser().getUserid().toString();
+        student = core.getUser().getUsername().toString();
         item = core.getItem().toString();
         fulfilled = core.getFulfilled();
-        date = core.getDate().toString();
+        date = core.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
     public String getOrderid() {
