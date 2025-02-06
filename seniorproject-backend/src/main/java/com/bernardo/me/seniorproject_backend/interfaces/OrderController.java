@@ -78,10 +78,14 @@ public class OrderController {
     }
 
     @PostMapping("/{id}/fulfill")
-    public ResponseEntity<OrdersDTO> fulfillOrder(@PathVariable UUID id) {
-        Orders order = us.fulfillOrders(id);
-        OrdersDTO result = new OrdersDTO(order);
-        return ResponseEntity.ok().body(result);
+    public ResponseEntity<String> fulfillOrder(@PathVariable UUID id) {
+        try {
+            us.fulfillOrders(id);
+        } catch (WrongThreadException ex) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("User does not exist");
+        }
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Order Fulfilled");
     }
 
 }

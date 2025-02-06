@@ -26,11 +26,12 @@ public class SecurityConfig {
                                 .sessionManagement(management -> management
                                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                                 .authorizeHttpRequests(authorize -> authorize
-                                                .requestMatchers(HttpMethod.POST, "/users", "/users/login")
-                                                .permitAll()
-                                                .requestMatchers(HttpMethod.GET, "/orders")
-                                                .permitAll()
-                                                .anyRequest().authenticated())
+                                                /*
+                                                 * .requestMatchers(HttpMethod.POST, "/users",
+                                                 * "/users/login").permitAll()
+                                                 * .requestMatchers(HttpMethod.GET, "/orders").permitAll()
+                                                 */
+                                                .anyRequest().permitAll())
                                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
                 return http.build();
         }
