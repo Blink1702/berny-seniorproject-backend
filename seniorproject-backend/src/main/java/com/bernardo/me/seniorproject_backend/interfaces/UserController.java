@@ -7,11 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bernardo.me.seniorproject_backend.entities.Orders;
 import com.bernardo.me.seniorproject_backend.entities.Profile;
 import com.bernardo.me.seniorproject_backend.entities.Users;
+import com.bernardo.me.seniorproject_backend.interfaces.dtos.OrdersDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.ProfileDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.UsersDTO;
 import com.bernardo.me.seniorproject_backend.security.JwtService;
@@ -59,6 +62,7 @@ public class UserController {
         String token = jwt.makeJwt(key);
         user.setToken(token);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
+
     }
 
     @PostMapping("/profile")
@@ -85,6 +89,13 @@ public class UserController {
         }
         ProfileDTO response = new ProfileDTO(result);
         return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("profile/{id}")
+    public ResponseEntity<ProfileDTO> getProfileById(@PathVariable UUID id) {
+        Profile profile = us.findProfile(id);
+        ProfileDTO result = new ProfileDTO(profile);
+        return ResponseEntity.ok().body(result);
     }
 
 }
