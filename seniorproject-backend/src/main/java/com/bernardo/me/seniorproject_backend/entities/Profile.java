@@ -19,9 +19,6 @@ public class Profile {
     private Users user;
     private String luId;
     private String email;
-    @OneToOne
-    @JoinColumn(name = "orders")
-    private Orders orders;
 
     public Profile() {
     }
@@ -61,14 +58,6 @@ public class Profile {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Orders getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Orders orders) {
-        this.orders = orders;
     }
 
 }
