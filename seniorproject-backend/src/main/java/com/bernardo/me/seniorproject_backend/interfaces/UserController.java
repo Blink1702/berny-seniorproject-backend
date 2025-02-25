@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bernardo.me.seniorproject_backend.entities.Orders;
 import com.bernardo.me.seniorproject_backend.entities.Profile;
 import com.bernardo.me.seniorproject_backend.entities.Users;
-import com.bernardo.me.seniorproject_backend.interfaces.dtos.OrdersDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.ProfileDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.UsersDTO;
 import com.bernardo.me.seniorproject_backend.security.JwtService;

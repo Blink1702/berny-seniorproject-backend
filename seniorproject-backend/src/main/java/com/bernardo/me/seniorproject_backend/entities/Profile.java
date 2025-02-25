@@ -1,7 +1,5 @@
 package com.bernardo.me.seniorproject_backend.entities;
 
-import java.util.List;
-
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.ProfileDTO;
 
 import jakarta.persistence.Entity;
@@ -9,9 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
