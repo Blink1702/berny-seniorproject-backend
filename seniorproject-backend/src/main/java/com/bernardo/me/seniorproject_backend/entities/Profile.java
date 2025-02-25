@@ -1,5 +1,7 @@
 package com.bernardo.me.seniorproject_backend.entities;
 
+import java.util.List;
+
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.ProfileDTO;
 
 import jakarta.persistence.Entity;
@@ -7,6 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -19,9 +24,6 @@ public class Profile {
     private Users user;
     private String luId;
     private String email;
-    @OneToOne
-    @JoinColumn(name = "orders")
-    private Orders orders;
 
     public Profile() {
     }
@@ -61,14 +63,6 @@ public class Profile {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Orders getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Orders orders) {
-        this.orders = orders;
     }
 
 }

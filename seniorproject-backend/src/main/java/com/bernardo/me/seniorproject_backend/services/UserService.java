@@ -68,15 +68,9 @@ public class UserService {
         Users user = maybeUser.get();
         if (user.getProfile() != null)
             throw new DuplicateException();
-        /*
-         * Orders newOrder = new Orders(profile.getOrders());
-         * newOrder.setUser(user);
-         * newOrder = ordersRepository.save(newOrder);
-         */
 
         Profile newProfile = new Profile(profile);
         newProfile.setUser(user);
-        // newProfile.setOrders(newOrder);
         profileRepository.save(newProfile);
     }
 
