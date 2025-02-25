@@ -82,6 +82,10 @@ public class UserService {
         return maybeUser.get().getProfile();
     }
 
+    public List<Profile> findProfiles() {
+        return profileRepository.findAll();
+    }
+
     public String saveOrder(UUID userid, OrdersDTO order) throws WrongUserException {
         Optional<Users> maybeUser = usersRepository.findById(userid);
         if (maybeUser.isEmpty())

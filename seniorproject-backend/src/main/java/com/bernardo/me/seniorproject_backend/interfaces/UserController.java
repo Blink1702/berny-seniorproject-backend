@@ -1,5 +1,7 @@
 package com.bernardo.me.seniorproject_backend.interfaces;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bernardo.me.seniorproject_backend.entities.Orders;
 import com.bernardo.me.seniorproject_backend.entities.Profile;
 import com.bernardo.me.seniorproject_backend.entities.Users;
+import com.bernardo.me.seniorproject_backend.interfaces.dtos.OrdersDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.ProfileDTO;
 import com.bernardo.me.seniorproject_backend.interfaces.dtos.UsersDTO;
 import com.bernardo.me.seniorproject_backend.security.JwtService;
@@ -87,6 +91,16 @@ public class UserController {
         }
         ProfileDTO response = new ProfileDTO(result);
         return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("/allProfiles")
+    public ResponseEntity<List<ProfileDTO>> getAllProfiles() {
+        List<Profile> profiles = us.findProfiles();
+        List<ProfileDTO> results = new ArrayList<ProfileDTO>();
+        for (Profile p : profiles) {
+            results.add(new ProfileDTO(p));
+        }
+        return ResponseEntity.ok().body(results);
     }
 
     @GetMapping("profile/{id}")

@@ -17,7 +17,7 @@ public class OrdersDTO {
 
     public OrdersDTO(Orders core) {
         orderid = core.getOrderid().toString();
-        student = core.getUser().getUsername().toString();
+        student = core.getUser().getUserid().toString();
         item = core.getItem().toString();
         fulfilled = core.getFulfilled();
         date = core.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
