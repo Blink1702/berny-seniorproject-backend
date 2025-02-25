@@ -16,6 +16,7 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(columnDefinition = "VARCHAR(45)")

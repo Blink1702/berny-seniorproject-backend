@@ -48,7 +48,7 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<UsersDTO> save(@RequestBody UsersDTO user) {
         if (user.getUsername().isBlank() || user.getPassword().isBlank()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(user);
