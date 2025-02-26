@@ -58,10 +58,8 @@ public class OrderController {
         return ResponseEntity.ok().body(results);
     }
 
-    @GetMapping("/userOrder")
-    public ResponseEntity<List<OrdersDTO>> getOrdersByUser(Authentication authentication) {
-        PantryUserDetails details = (PantryUserDetails) authentication.getPrincipal();
-        UUID id = UUID.fromString(details.getUsername());
+    @GetMapping("/userOrders/{id}")
+    public ResponseEntity<List<OrdersDTO>> getOrdersByUser(@PathVariable UUID id) {
         List<Orders> orders = us.findOrderByUser(id);
         List<OrdersDTO> results = new ArrayList<OrdersDTO>();
         for (Orders o : orders) {
